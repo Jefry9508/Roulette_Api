@@ -1,6 +1,7 @@
 using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Text.Json.Serialization;
 namespace Roulette_Api.Models
 {
     public class Bet
@@ -10,12 +11,14 @@ namespace Roulette_Api.Models
         public string Id { get; set; }
         [BsonRepresentation(BsonType.ObjectId)]
         [BsonElement("roulette_id")]
-        public string RouletteId { get; set; }
+        [JsonPropertyName("roulette_id")]
+        public string rouletteId { get; set; }
         [BsonElement("user_id")]
-        public string UserId { get; set; }
-        public int Type { get; set; }
-        public int Target { get; set; }
-        public decimal Money { get; set; }
-        public DateTime Date { get; set; }
+        [JsonPropertyName("user_id")]
+        public string userId { get; set; }
+        public int type { get; set; }
+        public int target { get; set; }
+        public decimal money { get; set; }
+        public DateTime date { get; set; }
     }
 }
