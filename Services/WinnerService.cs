@@ -24,9 +24,7 @@ namespace Roulette_Api.Services
             _winners.Find<Winner>(winner => winner.Id == id).FirstOrDefault();
         public void Update(string id, Winner winnerIn) =>
             _winners.ReplaceOne(winner => winner.Id == id, winnerIn);
-        public void Remove(Winner winnerIn) =>
-            _winners.DeleteOne(winner => winner.Id == winnerIn.Id);
-        public void Remove(string id) => 
-            _winners.DeleteOne(winner => winner.Id == id);
+        public List<Winner> GetByGameId(string gameId) =>
+            _winners.Find<Winner>(winner => winner.gameId == gameId).ToList();
     }
 }

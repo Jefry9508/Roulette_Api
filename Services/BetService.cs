@@ -24,9 +24,9 @@ namespace Roulette_Api.Services
             _bets.Find<Bet>(bet => bet.Id == id).FirstOrDefault();
         public void Update(string id, Bet betIn) =>
             _bets.ReplaceOne(bet => bet.Id == id, betIn);
-        public void Remove(Bet betIn) =>
-            _bets.DeleteOne(bet => bet.Id == betIn.Id);
-        public void Remove(string id) => 
-            _bets.DeleteOne(bet => bet.Id == id);
+        public List<Bet> FindWinningBets(string gameId, int winningNumber) =>    
+            _bets.Find<Bet>(bet => (bet.type == 0 && bet.target == winningNumber) ||
+                (bet.type == 1 && bet.target == winningNumber%2)).ToList();
+    
     }
 }
