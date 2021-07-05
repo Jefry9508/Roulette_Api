@@ -23,5 +23,4 @@ namespace Roulette_Api.Models
         [JsonPropertyName("last_update")]
         public DateTime lastUpdate { get; set; }
     }
-    
 }

@@ -26,7 +26,6 @@ namespace Roulette_Api.Models
         [Required(ErrorMessage = "El tipo de apuesta es requerido (Número o color).")]
         [Range(0, 1, ErrorMessage = "Tipo de apuesta incorrecto. Debe ser rojo (o) o negro (1).")]
         public int betType { get; set; }
-
         [BsonElement("bet_target")]
         [JsonPropertyName("bet_target")]
         [Required(ErrorMessage = "El objetivo de la apuesta es requerido (Número, rojo o negro.)")]

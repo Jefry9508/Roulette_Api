@@ -3,7 +3,6 @@ using Roulette_Api.Models;
 using Roulette_Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-
 namespace Roulette_Api.Controllers
 {
     [Route("api/[controller]")]

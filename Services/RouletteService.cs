@@ -24,9 +24,5 @@ namespace Roulette_Api.Services
             _roulettes.Find<Roulette>(roulette => roulette.Id == id).FirstOrDefault();
         public void Update(string id, Roulette rouletteIn) =>
             _roulettes.ReplaceOne(roulette => roulette.Id == id, rouletteIn);
-        public void Remove(Roulette rouletteIn) =>
-            _roulettes.DeleteOne(roulette => roulette.Id == rouletteIn.Id);
-        public void Remove(string id) => 
-            _roulettes.DeleteOne(roulette => roulette.Id == id);
     }
 }

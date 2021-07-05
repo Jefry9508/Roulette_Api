@@ -18,12 +18,6 @@ namespace Roulette_Api.Services
             _winners.InsertOne(winner);
             return winner;
         }
-        public List<Winner> Get() =>
-            _winners.Find(winner => true).ToList();
-        public Winner Get(string id) =>
-            _winners.Find<Winner>(winner => winner.Id == id).FirstOrDefault();
-        public void Update(string id, Winner winnerIn) =>
-            _winners.ReplaceOne(winner => winner.Id == id, winnerIn);
         public List<Winner> GetByGameId(string gameId) =>
             _winners.Find<Winner>(winner => winner.gameId == gameId).ToList();
     }
