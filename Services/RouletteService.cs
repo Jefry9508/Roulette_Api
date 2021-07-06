@@ -9,13 +9,13 @@ namespace Roulette_Api.Services
         private readonly IMongoCollection<Roulette> _roulettes;
         public RouletteService(IDatabaseSettings settings)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-            _roulettes = database.GetCollection<Roulette>(settings.RoulettesCollectionName);
+            var client = new MongoClient(connectionString: settings.ConnectionString);
+            var database = client.GetDatabase(name: settings.DatabaseName);
+            _roulettes = database.GetCollection<Roulette>(name:settings.RoulettesCollectionName);
         }
         public Roulette Create(Roulette roulette)
         {
-            _roulettes.InsertOne(roulette);
+            _roulettes.InsertOne(document: roulette);
             return roulette;
         }
         public List<Roulette> Get() =>

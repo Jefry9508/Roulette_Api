@@ -9,13 +9,13 @@ namespace Roulette_Api.Services
         private readonly IMongoCollection<Bet> _bets;
         public BetService(IDatabaseSettings settings)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-            _bets = database.GetCollection<Bet>(settings.BetsCollectionName);
+            var client = new MongoClient(connectionString: settings.ConnectionString);
+            var database = client.GetDatabase(name: settings.DatabaseName);
+            _bets = database.GetCollection<Bet>(name: settings.BetsCollectionName);
         }
         public Bet Create(Bet bet)
         {
-            _bets.InsertOne(bet);
+            _bets.InsertOne(document: bet);
             return bet;
         }
         public List<Bet> FindWinningBets(string gameId, int winningNumber) =>    

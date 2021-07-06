@@ -29,11 +29,11 @@ namespace Roulette_Api.Controllers
         public ActionResult<object> Create(Bet bet)
         {
             var header = Request.Headers;
-            if (!header.ContainsKey("user_id"))
+            if (!header.ContainsKey(key: "user_id"))
             {
                 return Unauthorized(new {message = "No se ha realizado la autenticación de usuario"});
             }
-            var roullete = _rouletteService.Get(bet.rouletteId);
+            var roullete = _rouletteService.Get(id: bet.rouletteId);
             if (roullete == null)
             {
                 return NotFound(new {message = "La rouletta en la que desea apostar no existe"});

@@ -68,7 +68,7 @@ namespace Roulette_Api.Controllers
             }else{
                 return Ok(new{message = "La ruleta ya se encuentra disponible para apostar."});
             }
-            _rouletteService.Update(id, rouletteFound);
+            _rouletteService.Update(id: id, rouletteIn: rouletteFound);
 
             return NoContent();
         }
@@ -76,7 +76,7 @@ namespace Roulette_Api.Controllers
         public IActionResult Closing(string id)
         {
             string gameId ;
-            var rouletteFound = _rouletteService.Get(id);
+            var rouletteFound = _rouletteService.Get(id: id);
             if (rouletteFound == null)
             {
                 return NotFound();
@@ -89,8 +89,8 @@ namespace Roulette_Api.Controllers
             rouletteFound.state = false;
             rouletteFound.currentGameId = null;
             rouletteFound.lastUpdate = DateTime.UtcNow;
-            _rouletteService.Update(rouletteFound.Id, rouletteFound);
-            return Ok(FindWinners(gameId));
+            _rouletteService.Update(id: rouletteFound.Id, rouletteIn: rouletteFound);
+            return Ok(FindWinners(gameId: gameId));
         }
         private int GenerateWinningNumber()
         {
